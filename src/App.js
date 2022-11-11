@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NavBar from './Components/NavBar';
+import Footer from './Components/Footer';
+
+const HomePage = lazy(() => import("./Pages/HomePage"));
+const Login = lazy(() => import("./Pages/Login"));
+const Compiler = lazy(() => import("./Pages/Compiler"));
+const Profile = lazy(() => import("./Pages/Profile"));
+const AprovePage = lazy(() => import("./Pages/Admin/ApprovePage"));
+const ComilerForID = lazy(() => import("./Pages/ComilerForID"));
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <div>
+        <Router>
+        <NavBar/>
+            <Suspense Suspence={<h1>Loading...</h1>}>
+              <Routes>
+                      <Route path="/" element={<HomePage />} exact/>
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/compiler" element={<Compiler />} />
+                      <Route path="/:id" element={<ComilerForID />} />
+                      <Route path="/admin/appr" element={<AprovePage />} />
+                      <Route path="/profile" element={<Profile />} />
+              </Routes>
+            </Suspense> 
+        </Router>
+        <Footer/>
+    </div>
     </div>
   );
 }
