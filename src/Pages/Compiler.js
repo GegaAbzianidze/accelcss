@@ -7,15 +7,20 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Box, SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
 import { Icon } from "@iconify/react";
+import "./Pages.css"
 
 function Compiler() {
-  const [codeAP, setCodeAP] = useState(
-    '<script src="https://cdn.tailwindcss.com"></script>'
-  );
+  
+  const [codeAP, setCodeAP] = useState("<!-- write your code here ↓ -->");
   const [user, setUser] = useState({});
   const [titleAP, setTitleAp] = useState();
   const [popupTrig, setPopupTrig] = useState(false);
 
+  const iframeRender = '<script src="https://cdn.tailwindcss.com"></script>' + codeAP;
+  const iframeRenderbootstrap = '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>' + codeAP;
+  const iframeRenderbulma = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">' + codeAP;
+  const iframeRendermaterialize = ' <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>' + codeAP;
+  const iframeRendersemantic = '<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />' + codeAP;
   useEffect(() => {
     async function getUserData() {
       await supabase.auth.getUser().then((value) => {
@@ -114,7 +119,7 @@ function Compiler() {
         <div>
           <iframe
             className="ifrmm"
-            srcDoc={codeAP}
+            srcDoc={iframeRendersemantic}
             title="Display"
             frameBorder="0"
           ></iframe>
@@ -124,7 +129,7 @@ function Compiler() {
         <div className="flex">
           <div>
             <iframe
-              srcDoc={codeAP}
+              srcDoc={iframeRender}
               title="Display"
               className="border-4 h-[300px] w-[440px]"
             ></iframe>
@@ -136,6 +141,7 @@ function Compiler() {
               onChange={(event) => setTitleAp(event.target.value)}
               required
             />
+            <button onClick={() => setPopupTrig(false)}>close</button>
             {/* dropdown */}
           </div>
         </div>
