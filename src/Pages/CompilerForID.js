@@ -12,6 +12,8 @@ function ComilerForID() {
   const [code, setCode] = useState();
   const [lcode, setLcode] = useState();
 
+  const iframeRender = '<script src="https://cdn.tailwindcss.com"></script>' + code;
+
   useEffect(() => {
     const fatchSingleComp = async () => {
       const { data, error } = await supabase
@@ -48,7 +50,7 @@ function ComilerForID() {
         <div>
           <iframe
             className="ifrmm"
-            srcDoc={code}
+            srcDoc={iframeRender}
             title="Display"
             frameBorder="0"
           ></iframe>
