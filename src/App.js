@@ -17,7 +17,7 @@ function App() {
       <div>
         <Router>
           <NavBar />
-          <Suspense Suspence={<h1>Loading...</h1>}>
+          <Suspense Suspence={<h1>Loading..</h1>}>
             <Routes>
               <Route path="/" element={<HomePage />} exact />
               <Route path="/login" element={<Login />} />
