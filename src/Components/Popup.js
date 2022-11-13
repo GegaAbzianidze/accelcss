@@ -1,6 +1,6 @@
 import React from "react";
 
-function Popup(props) {
+function Popupp(props) {
   return props.trigger ? (
     <div>
       <div className="fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.2)] flex justify-center items-center">
@@ -14,4 +14,4 @@ function Popup(props) {
   );
 }
 
-export default Popup;
+export default Popupp;
