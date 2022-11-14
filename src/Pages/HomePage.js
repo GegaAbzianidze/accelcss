@@ -39,12 +39,18 @@ function HomePage() {
           </p>
         </center>
         <div className="flex gap-6 align-center justify-center mt-4">
+          <div className="flex border-2 border-b-4 hover:border-b-2 hover:border-t-4 border-black">
           <Tippy content="Explore Css world">
-            <button className="border-2 border-black border-b-4 px-6 py-[2px] hover:border-b-2 hover:border-t-4" onClick={Sexplore}>Explore</button>
+            <button className="outline-0 px-6 py-[2px]" onClick={Sexplore}>Explore</button>
           </Tippy>
+          <Icon className="border-black border-l-2 text-3xl right-0 text-[#58544c]" icon="ion:arrow-down-b"/>
+          </div>
+          <div className="flex border-2 border-t-4 hover:border-t-2 hover:border-b-4 border-black">
           <Tippy content="Upload your own style">
-            <button className="border-2 border-black border-t-4 px-6 py-[2px] hover:border-t-2 hover:border-b-4" onClick={Nupload}>Upload Code</button>
+            <button className="outline-0 px-6 py-[2px]" onClick={Nupload}>Upload Code</button>
           </Tippy>
+          <Icon className="border-black border-l-2 text-3xl right-0 text-[#58544c]" icon="ion:arrow-up-b"/>
+          </div>
         </div>
         </div>
         <div ref={ref}>

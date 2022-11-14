@@ -3,22 +3,22 @@ import React from "react";
 function Footer() {
   return (
     <div>
-      <div class="flex flex-col items-center justify-between p-6 bg-white dark:bg-gray-900 sm:flex-row mt-6">
+      <div class="flex flex-col items-center justify-between p-6 bg-[#1E1919] sm:flex-row mt-6">
         <a
           href="#"
-          class="text-xl font-bold text-gray-600 transition-colors duration-300 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
+          class="text-xl font-bold text-white transition-colors duration-300  hover:text-gray-700"
         >
           AccelCss
         </a>
 
-        <p class="text-sm text-gray-600 dark:text-gray-300">
+        <p class="text-sm text-white dark:text-gray-300">
           © Copyright 2021. All Rights Reserved.
         </p>
 
         <div class="flex -mx-2">
           <a
             href="#"
-            class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+            class="mx-2 text-gray-600 transition-colors duration-300  hover:text-gray-400 "
             aria-label="Reddit"
           >
             <svg
