@@ -6,11 +6,8 @@ import "./Components.css"
 import Tippy from "@tippyjs/react";
 import PopupPrev from "./PopupPrev";
 
-const PreviewCard = ({ code }) => {
+const PreviewCard = ({ code, onClick }) => {
   const [user, setUser] = useState({});
-
-  const [likk, setLikk] = useState(false);
-  const [favv, setFavv] = useState(false);
 
   const [popupTrig, setPopupTrig] = useState(false);
 
@@ -38,6 +35,9 @@ const PreviewCard = ({ code }) => {
   const string2 = code.whoFavs;
 
   const addLikes = () => {
+
+    onClick()
+
     const likescount = code.likes;
 
     const likes = +likescount + 1;
@@ -51,16 +51,13 @@ const PreviewCard = ({ code }) => {
           .update({ likes, whoLikes })
           .eq("id", code.id)
           .select();
-
-        if (data) {
-          setLikk(true);
-        }
       };
 
       fetchCodes();
     }
   };
   const addFavs = () => {
+    onClick()
     const whoFavs = code.whoLikes + "," + user.email;
 
     if (code.id) {
@@ -70,16 +67,13 @@ const PreviewCard = ({ code }) => {
           .update({ whoFavs })
           .eq("id", code.id)
           .select();
-
-        if (data) {
-          setFavv(true);
-        }
       };
 
       fetchCodes();
     }
   };
   const removeLikes = () => {
+    onClick()
     const likescount = code.likes;
     const likes = +likescount - 1;
     const whoLikesLc = code.whoLikes;
@@ -92,21 +86,17 @@ const PreviewCard = ({ code }) => {
           .from("Codes")
           .update({ likes, whoLikes })
           .eq("id", code.id)
-          .select();
-
-        if (data) {
-          setLikk(false);
-        }
+          .select()
       };
 
       fetchCodes();
     }
   };
   const removeFavs = () => {
+    onClick()
     const whoFavsLc = code.WhoFavs;
 
     const whoFavs = whoFavsLc.replace("," + user.email, "");
-
     if (code.id) {
       const fetchCodes = async () => {
         const { data, error } = await supabase
@@ -116,7 +106,7 @@ const PreviewCard = ({ code }) => {
           .select();
 
         if (data) {
-          setFavv(false);
+          
         }
       };
 
@@ -169,7 +159,7 @@ const PreviewCard = ({ code }) => {
       <div className="justify-between flex  text-xl bg-[#fbf5e6] ">
           <div className="flex">
           <p>{code.likes}</p>
-          {string.includes(substring) || likk === true ? (
+          {string.includes(substring) ? (
             <button onClick={removeLikes}>
               <Icon icon="ion:heart"/>
             </button>
@@ -178,7 +168,7 @@ const PreviewCard = ({ code }) => {
               <Icon icon="ion:heart-outline" className="mt-[2px]"/>
             </button>
           )}</div>
-          {string2.includes(substring) || favv === true ? (
+          {string2.includes(substring) ? (
             <button onClick={removeFavs}>
               <Icon icon="ion:bookmark" />
             </button>

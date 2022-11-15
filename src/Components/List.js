@@ -7,6 +7,14 @@ function List() {
   const [Codes, setCodes] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setpostPerPage] = useState(6);
+
+  const [value, setValue] = useState(false);
+
+  const increment = () => {
+    setValue(!value)
+  }
+
+  console.log(value);
   useEffect(() => {
     const fetchCodes = async () => {
       const { data, error } = await supabase
@@ -25,7 +33,7 @@ function List() {
     };
 
     fetchCodes();
-  }, []);
+  }, [value]);
 
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
@@ -35,7 +43,7 @@ function List() {
     <div>
       <div>
         <div className="items-center justify-center text-center align-center">
-          <Colist Codes={currentPost} />
+          <Colist Codes={currentPost} onClick={increment}/>
         </div>
         <div className="flex items-center justify-center text-center align-center mt-4">
           <Paginations

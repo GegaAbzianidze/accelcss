@@ -1,27 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-//import { supabase } from "../SupaBaseClient";
+import { supabase } from "../SupaBaseClient";
 
 function NavBar() {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  //const [user, setUser] = useState({});
-  //useEffect(() => {
-   // async function getUserData() {
-    //  await supabase.auth.getUser().then((value) => {
-    //    if (value.data?.user) {
-     //     setUser(value.data.user);
-    //     console.log(value.data.user);
-   //     }
-    //  });
-  //  }
-   // getUserData();
-  //}, []);
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    async function getUserData() {
+      await supabase.auth.getUser().then((value) => {
+      if (value.data?.user) {
+         setUser(value.data.user);
+       console.log(value.data.user);
+       }
+     });
+    }
+    getUserData();
+  }, []);
 
-  //const HandleLogOut = async () => {
-   // const { error } = await supabase.auth.signOut();
-   // navigate("/");
-  //};
+  const HandleLogOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    window.location.reload(false);
+  };
 
   return (
     <nav className="relative border-b-2 border-black">
@@ -58,13 +58,20 @@ function NavBar() {
             </Link>
           </div>
 
+
           <div className="flex justify-center md:block visible px-6 py-[2px] border-2 border-black">
-              <Link
+          {user.aud !== "authenticated" ?
+            
+           <Link
                 className="relative text-black transition-colors duration-300 transform hover:text-gray-600"
                 to="/login"
               >
                 Sign in
               </Link>
+            :
+            <button onClick={HandleLogOut}>Sign Out</button> 
+            }
+            
           </div>
         </div>
       </div>
