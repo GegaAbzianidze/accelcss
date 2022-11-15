@@ -36,8 +36,6 @@ const PreviewCard = ({ code, onClick }) => {
 
   const addLikes = () => {
 
-    onClick()
-
     const likescount = code.likes;
 
     const likes = +likescount + 1;
@@ -51,13 +49,16 @@ const PreviewCard = ({ code, onClick }) => {
           .update({ likes, whoLikes })
           .eq("id", code.id)
           .select();
+
+          if(data){
+            onClick()
+          }
       };
 
       fetchCodes();
     }
   };
   const addFavs = () => {
-    onClick()
     const whoFavs = code.whoLikes + "," + user.email;
 
     if (code.id) {
@@ -67,13 +68,17 @@ const PreviewCard = ({ code, onClick }) => {
           .update({ whoFavs })
           .eq("id", code.id)
           .select();
+
+          if(data){
+            onClick()
+          }
       };
 
       fetchCodes();
     }
   };
   const removeLikes = () => {
-    onClick()
+    
     const likescount = code.likes;
     const likes = +likescount - 1;
     const whoLikesLc = code.whoLikes;
@@ -87,13 +92,16 @@ const PreviewCard = ({ code, onClick }) => {
           .update({ likes, whoLikes })
           .eq("id", code.id)
           .select()
+
+          if(data){
+            onClick()
+          }
       };
 
       fetchCodes();
     }
   };
   const removeFavs = () => {
-    onClick()
     const whoFavsLc = code.WhoFavs;
 
     const whoFavs = whoFavsLc.replace("," + user.email, "");
@@ -105,9 +113,9 @@ const PreviewCard = ({ code, onClick }) => {
           .eq("id", code.id)
           .select();
 
-        if (data) {
-          
-        }
+          if(data){
+            onClick()
+          }
       };
 
       fetchCodes();
