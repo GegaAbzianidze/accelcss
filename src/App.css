@@ -19,3 +19,16 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+.Phone{
+          visibility: hidden;
+}
+
+@media (max-width: 767px) {
+        .App {
+          display: none;
+        }
+        
+        .Phone{
+          visibility: visible;
+        }
+}
