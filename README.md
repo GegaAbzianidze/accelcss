@@ -8,12 +8,12 @@
 
 ## Demo
 
-https://reqcompx.vercel.app/
+https://accelcss.com/
 
 
 ## Appendix
 
-ReQCompX is a community based Css component library where you can find ready to use Css or any styling frameworks Code created by other developers.
+accelcss is a community based Css component library where you can find ready to use Css or any styling frameworks Code created by other developers.
 
 
 ## Environment Variables
