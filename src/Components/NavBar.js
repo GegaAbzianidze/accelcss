@@ -25,7 +25,7 @@ function NavBar() {
 
   return (
     <nav className="relative border-b-2 border-black">
-      <div className="container px-12 py-4 md:flex md:justify-between md:items-center">
+      <div className="container px-12 py-4 flex justify-between items-center">
         <div className="flex items-center justify-between ">
           <div>
             <Link
