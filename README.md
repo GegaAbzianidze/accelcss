@@ -3,17 +3,17 @@
 
 
 
-![Logo](https://i.imgur.com/Hvp30iQ.png)
+![Logo](https://i.imgur.com/ty8gNtS.png)
 
 
 ## Demo
 
-https://reqcompx.vercel.app/
+https://accelcss.com
 
 
 ## Appendix
 
-ReQCompX is a community based Css component library where you can find ready to use Css or any styling frameworks Code created by other developers.
+AccleCss is a community based Css component library where you can find ready to use Css or any styling frameworks Code created by other developers.
 
 
 ## Environment Variables
@@ -28,8 +28,8 @@ To run this project, you will need to add the following environment variables to
 ## Features
 
 - Upload/Copy Css style
-- Upvote/Saved system
-- Builtin Monaco editor
+- Upvote/Save system
+- Built-in Monaco editor
 - Github/LinkedIn Sign In
 
 
